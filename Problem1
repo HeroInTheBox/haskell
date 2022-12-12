@@ -1,0 +1,11 @@
+--Выводим конец списка
+import System.IO
+
+listLast :: [a] -> a
+listLast [x] = x --для одного элемента
+listLast (_:xs) = listLast xs --пока не дойдем до последнего элемента
+listLast [] = error "Can't do last of an empty list!"
+
+main = do
+  putStr $show $ listLast ['1', '2', '3', '4']
+  return()
