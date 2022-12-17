@@ -1,0 +1,18 @@
+--Path from one node to another one
+
+import Data.List (partition)
+import System.IO
+
+pathsImpl :: Eq a => [a] -> a -> a -> [(a, a)] -> [[a]]
+pathsImpl trail src dest clauses
+  | src == dest = [src : trail]
+  | otherwise = do
+    let (nexts, rest) = partition ((== src) . fst) clauses
+    next <- nexts
+    pathsImpl (src : trail) (snd next) dest rest
+
+paths :: Eq a => a -> a -> [(a, a)] -> [[a]]
+paths src dest clauses = map reverse (pathsImpl [] src dest clauses)
+
+main do =
+  print $ show (paths 1 4 [(1, 2), (2, 3), (1, 3), (3, 4), (4, 2), (5, 6)])
