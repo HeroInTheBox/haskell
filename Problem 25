@@ -1,0 +1,14 @@
+import System.IO
+
+--Generate a random permutation of the elements of a list
+import Data.Ord
+import Data.List
+
+rnd_permu :: [a] -> [Int] -> [a]
+rnd_permu xs = map fst . sortBy (comparing snd) . zip xs . 
+       map fst . sortBy (comparing snd) . zip ([1..] :: [Int]) 
+
+main = do
+  putStrLn $ show $ [1, 2, 3]
+  putStr $ show $ rnd_permu [1, 2, 3][2, 3, 1]
+  return ()
