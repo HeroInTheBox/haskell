@@ -1,0 +1,14 @@
+import System.IO
+
+--Remove the K'th element from a list
+removeAt :: Int -> [a] -> (a, [a])
+removeAt k xs = case back of
+  [] -> error "removeAt: index too large"
+  x : rest -> (x, front ++ rest)
+  where
+    (front, back) = splitAt (k - 1) xs
+
+main = do
+  putStrLn $ show $ [1, 2, 3]
+  putStr $ show $ removeAt 1 [1, 2, 3]
+  return ()
