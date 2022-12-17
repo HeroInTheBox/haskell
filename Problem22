@@ -1,0 +1,8 @@
+import System.IO
+
+--Create a list containing all integers within a given range
+range x y = [x..y]
+
+main = do
+  putStr $ show $ range 3 7
+  return ()
